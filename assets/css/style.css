@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Model box yang lebih mudah diatur */
+}
+
+/* GLOBAL SETUP */
+html, body {
+    width: 100%;
+    overflow-x: hidden; 
+    font-family: 'Arial', sans-serif; 
+    line-height: 1.6;
+}
+
+/* DEFINISI PALET WARNA (Merah-Hitam Minahasa) */
+:root {
+    --color-primary-red: #C0392B; /* Merah Aksi yang Kuat */
+    --color-dark-text: #2c3e50;  /* Hitam / Abu-abu gelap elegan */
+    --color-light-bg: #f8f9fa;  /* Latar belakang terang */
+    --color-text-body: #333333;  
+}
+
+body {
+    color: var(--color-text-body);
+    background-color: white;
+    padding-top: 66px; /* Memberi ruang di bagian atas body, seukuran navbar */
+}
+
+/* Utilitas Warna */
+.bg-dark-minahasa {
+    background-color: var(--color-dark-text) !important;
+}
+.text-dark-text {
+    color: var(--color-dark-text) !important;
+}
+.bg-merah-aksi {
+    background-color: var(--color-primary-red) !important;
+}
+.btn-merah-aksi {
+    background-color: var(--color-primary-red);
+    color: white;
+    border: 1px solid var(--color-primary-red);
+    transition: background-color 0.3s, border-color 0.3s;
+    font-weight: bold;
+}
+.btn-merah-aksi:hover {
+    background-color: #9e2a22; 
+    color: white;
+    border-color: #9e2a22;
+}
+.text-merah-aksi {
+    color: var(--color-primary-red) !important;
+}
+.border-merah-aksi {
+    border-color: var(--color-primary-red) !important;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+/* ======================================================= */
+/* 2. NAVBAR STYLING */
+/* ======================================================= */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    margin: 0 5px;
+}
+/* Menandai Link yang Aktif dengan Warna Merah */
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+    color: var(--color-primary-red) !important;
+}
+.fixed-top {
+    z-index: 1030; 
+}
+
+/* ======================================================= */
+/* 3. HERO CAROUSEL STYLING (PERBAIKAN TINGGI) */
+/* ======================================================= */
+
+/* Container Hero Carousel */
+#hero-carousel {
+    margin-bottom: 0 !important; /* Memastikan tidak ada margin aneh di bawah */
+}
+
+/* Background Slide Carousel (KUNCI PERBAIKAN TINGGI) */
+.hero-slide-bg {
+    /* Ini adalah kunci untuk membuat tinggi besar di desktop */
+    min-height: 80vh; 
+    
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+    
+    /* Efek Parallax */
+    background-attachment: fixed;
+}
+
+/* Overlay gelap agar teks terbaca */
+.hero-slide-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45); /* Sesuaikan tingkat kegelapan */
+}
+
+/* Konten Hero (Teks & Search Bar) */
+.hero-overlay-content {
+    position: relative;
+    z-index: 1; /* Pastikan di atas overlay */
+    padding: 0 15px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Shadow lebih kuat untuk teks */
+}
+
+.hero-overlay-content h1 {
+    font-size: 4.5rem; /* Ukuran font lebih besar untuk judul */
+}
+
+.hero-overlay-content p.lead {
+    font-size: 1.75rem; /* Ukuran font lebih besar untuk deskripsi */
+}
+
+.hero-search-bar .input-group {
+    max-width: 650px; /* Lebar search bar sedikit lebih lebar */
+    margin: 0 auto;
+}
+
+/* Menghilangkan padding section agar carousel penuh */
+.carousel {
+    padding: 0 !important; 
+}
+
+
+/* ======================================================= */
+/* 4. CONTENT SECTIONS (EVENT & WARISAN BUDAYA) */
+/* ======================================================= */
+
+/* Card Image Kustom */
+.card-img-custom {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px 4px 0 0;
+}
+
+/* Card Hover Effect */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Warisan Populer (Lingkaran) */
+.destinasi-circle-wrapper { 
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; 
+    background-size: cover;
+    background-position: center;
+    border: 4px solid var(--color-primary-red); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.destinasi-circle-wrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.destinasi-populer a {
+    text-decoration: none;
+}
+
+/* Section Artikel Horizontal */
+.article-card-horizontal {
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+}
+.article-card-horizontal .img-wrapper {
+    flex: 0 0 150px; /* Lebar gambar tetap */
+    max-height: 150px;
+    overflow: hidden;
+}
+.article-card-horizontal .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.article-card-horizontal .card-body {
+    flex: 1;
+    padding: 15px;
+}
+
+
+/* Galeri */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.gallery-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+
+/* ======================================================= */
+/* 5. FOOTER STYLING & SOCIAL ICONS (SVG) */
+/* ======================================================= */
+
+footer a {
+    color: rgba(255, 255, 255, 0.7);
+}
+footer a:hover {
+    color: white;
+}
+hr {
+    color: rgba(255, 255, 255, 0.1);
+}
+
+/* Styling Khusus Ikon SVG Media Sosial */
+.social-icon svg {
+    width: 28px; /* Ukuran yang sedikit lebih besar */
+    height: 28px;
+    vertical-align: middle;
+    fill: currentColor; /* Mengikuti warna teks (text-white) */
+    transition: fill 0.3s, transform 0.2s;
+}
+
+.social-icon:hover svg {
+    fill: #f3f3f3; /* sedikit lebih terang saat hover */
+    transform: scale(1.1);
+}
+
+/* Scrollable Card Container (Destinasi Populer) */
+.card-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 10px; /* Ruang untuk scrollbar */
+    scroll-snap-type: x mandatory;
+}
+.card-scroll-container .card {
+    flex: 0 0 250px; /* Lebar kartu tetap */
+    scroll-snap-align: start;
+}
+
+
+/* ======================================================= */
+/* 6. RESPONSIVENESS */
+/* ======================================================= */
+
+@media (max-width: 768px) {
+    /* Navbar Mobile */
+    .navbar-brand span {
+        display: none !important; /* Sembunyikan Logo text di mobile untuk ringkas */
+    }
+
+    /* Hero Carousel Mobile Override */
+    .hero-slide-bg {
+        /* Tinggi yang lebih pendek untuk perangkat mobile */
+        min-height: 60vh !important; 
+        padding: 80px 0;
+    }
+    .hero-overlay-content h1 {
+        font-size: 2.5rem !important;
+    }
+    .hero-overlay-content p.lead {
+        font-size: 1.25rem !important;
+    }
+    .hero-search-bar .input-group {
+        max-width: 90%;
+    }
+
+    /* Artikel Horizontal Mobile */
+    .article-card-horizontal {
+        flex-direction: column;
+        text-align: center;
+    }
+    .article-card-horizontal .img-wrapper {
+        flex: none;
+        width: 100%;
+        max-height: 200px;
+    }
+    .article-card-horizontal .img-wrapper img {
+        border-radius: 0.3rem 0.3rem 0 0 !important;
+    }
+    .article-card-horizontal .card-body {
+        text-align: left;
+    }
+
+    /* Galeri Mobile */
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .gallery-item:nth-child(1) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    /* Destinasi Card Scroll Mobile */
+    .card-scroll-container .card {
+        flex: 0 0 70%; /* Kartu lebih lebar di mobile */
+    }
+}
